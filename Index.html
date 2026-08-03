@@ -1,6 +1,399 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <h1>Hello, World! My GitHub Page is live.</h1>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Apiary Guide | Honey Bees & Professional Beekeeping Tools</title>
+  <style>
+    :root {
+      --primary: #d97706;
+      --primary-hover: #b45309;
+      --accent: #fef3c7;
+      --bg-main: #fafaf9;
+      --card-bg: #ffffff;
+      --text-dark: #1c1917;
+      --text-muted: #57534e;
+      --border: #e7e5e4;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Navigation / Header */
+    header {
+      background: linear-gradient(135deg, #1c1917 0%, #292524 100%);
+      color: #fff;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-bottom: 5px solid var(--primary);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #fbbf24;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #d6d3d1;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* Section Styling */
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+      border-bottom: 3px solid var(--primary);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Bee Castes Grid */
+    .caste-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .caste-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .caste-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    }
+
+    .caste-badge {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--primary-hover);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+    }
+
+    .caste-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .caste-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Filter Buttons for Tools */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #e7e5e4;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Tools Grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .tool-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .tool-card h4 {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tool-category {
+      font-size: 0.75rem;
+      background: #f3f4f6;
+      color: #4b5563;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: normal;
+    }
+
+    .tool-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .tool-usage {
+      background: #fcfbf7;
+      border-left: 3px solid var(--primary);
+      padding: 0.6rem 0.8rem;
+      font-size: 0.85rem;
+      color: #44403c;
+    }
+
+    /* Tool Card Image Gallery Styles */
+    .tool-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tool-gallery img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    /* Footer */
+    footer {
+      background: #1c1917;
+      color: #a8a29e;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #fbbf24;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Header -->
+  <header>
+    <h1>🐝 Apiculture & Apiary Guide</h1>
+    <p>Understanding the structure of a honey bee colony and the essential professional equipment required for modern beekeeping.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Honey Bee Information Section -->
+    <section>
+      <h2 class="section-title">The Honey Bee Colony</h2>
+      <p class="section-desc">A honey bee colony (Apis mellifera) operates as a highly coordinated superorganism comprised of three distinct castes, each with vital roles.</p>
+
+      <div class="caste-grid">
+        <div class="caste-card">
+          <span class="caste-badge">1 Per Hive</span>
+          <h3>The Queen Bee</h3>
+          <p>The fertile female responsible for laying up to 2,000 eggs per day. She secretes queen pheromones ("queen substance") that maintain social order and prevent workers from raising competing queens.</p>
+        </div>
+
+        <div class="caste-card">
+          <span class="caste-badge">20,000 - 60,000 Per Hive</span>
+          <h3>Worker Bees</h3>
+          <p>Infertile females that perform all colony duties: nursing larvae, constructing beeswax comb, guarding the entrance, cleaning, and foraging for nectar, pollen, propolis, and water.</p>
+        </div>
+
+        <div class="caste-card">
+          <span class="caste-badge">Hundreds (Seasonal)</span>
+          <h3>Drone Bees</h3>
+          <p>Male bees without stingers whose sole physiological function is to mate with virgin queens from other colonies during nuptial flights, ensuring genetic diversity across apiaries.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Beekeeping Tools Section -->
+    <section>
+      <h2 class="section-title">Essential Beekeeping Tools</h2>
+      <p class="section-desc">Professional beekeepers rely on specialized equipment to safely inspect hives, maintain colony health, and harvest honey efficiently.</p>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterTools('all', event)">All Equipment</button>
+        <button class="filter-btn" onclick="filterTools('inspection', event)">Hive Inspection</button>
+        <button class="filter-btn" onclick="filterTools('protective', event)">Protective Gear</button>
+        <button class="filter-btn" onclick="filterTools('harvesting', event)">Harvesting</button>
+        <button class="filter-btn" onclick="filterTools('night-ops', event)">Night Operations</button>
+      </div>
+
+      <!-- Tools Grid -->
+      <div class="tools-grid">
+
+        <!-- Bee Smoker -->
+        <div class="tool-card" data-category="inspection">
+          <div>
+            <h4>Bee Smoker <span class="tool-category">Inspection</span></h4>
+            <p>A metal canister with bellows that burns wood chips, pine needles, or burlap to produce cool smoke.</p>
+          </div>
+          <div class="tool-usage">
+            <strong>Key Function:</strong> Masks the alarm pheromone (isopentyl acetate) released by guard bees, keeping the colony calm during hive opening.
+          </div>
+        </div>
+
+        <!-- Olight Marauder Mini RGB Flashlight -->
+        <div class="tool-card" data-category="night-ops">
+          <div>
+            <h4>Olight Mini RGB Flashlight <span class="tool-category">Night Ops</span></h4>
+            
+            <!-- Image Gallery -->
+            <div class="tool-gallery">
+              <img src="1000004157.jpg" alt="Olight Marauder Mini Flashlight Size Comparison">
+              <img src="1000004158.jpg" alt="Olight Marauder Mini Red, Green, and Blue Light Modes">
+            </div>
+
+            <p>A compact, powerful multi-color RGB flashlight capable of switching between intense white light and dedicated Red, Green, and Blue spectrum LEDs.</p>
+          </div>
+          <div class="tool-usage">
+            <strong>Key Function:</strong> Essential for nighttime hive moves and emergency inspections. Bees lack photoreceptors for red/green light spectrums and cannot easily see them; unlike bright white light, RGB modes do not agitate, disturb, or cause bees to swarm out at night.
+          </div>
+        </div>
+
+        <!-- Hive Tool -->
+        <div class="tool-card" data-category="inspection">
+          <div>
+            <h4>Hive Tool (J-Hook / Flat) <span class="tool-category">Inspection</span></h4>
+            <p>A heavy-duty steel pry bar used as an extension of the beekeeper's hand.</p>
+          </div>
+          <div class="tool-usage">
+            <strong>Key Function:</strong> Breaches the tough resin (propolis) and beeswax seals glued by bees to pry open covers and lift heavy wooden frames.
+          </div>
+        </div>
+
+        <!-- Bee Suit & Veil -->
+        <div class="tool-card" data-category="protective">
+          <div>
+            <h4>Ventilated Bee Suit & Veil <span class="tool-category">Protective</span></h4>
+            <p>Full-body protective gear made from multi-layered mesh fabric with a zip-on mesh veil.</p>
+          </div>
+          <div class="tool-usage">
+            <strong>Key Function:</strong> Prevents stings to face, neck, and body while providing air ventilation during hot outdoor inspections.
+          </div>
+        </div>
+
+        <!-- Bee Brush -->
+        <div class="tool-card" data-category="inspection">
+          <div>
+            <h4>Soft Bee Brush <span class="tool-category">Inspection</span></h4>
+            <p>A wooden handle brush with extra-soft flexible synthetic or horsehair bristles.</p>
+          </div>
+          <div class="tool-usage">
+            <strong>Key Function:</strong> Gently sweeps bees off honeycomb frames during inspections or harvest without harming or irritating them.
+          </div>
+        </div>
+
+        <!-- Queen Excluder -->
+        <div class="tool-card" data-category="harvesting">
+          <div>
+            <h4>Queen Excluder <span class="tool-category">Harvesting</span></h4>
+            <p>A grid made of plastic or wire with precise gaps (4.2 mm / 0.165 in).</p>
+          </div>
+          <div class="tool-usage">
+            <strong>Key Function:</strong> Allows smaller worker bees to pass through to upper honey supers while preventing the larger Queen from laying eggs in honey comb.
+          </div>
+        </div>
+
+        <!-- Honey Extractor -->
+        <div class="tool-card" data-category="harvesting">
+          <div>
+            <h4>Centrifugal Honey Extractor <span class="tool-category">Harvesting</span></h4>
+            <p>A stainless steel drum that spins uncapped honey frames at high speed.</p>
+          </div>
+          <div class="tool-usage">
+            <strong>Key Function:</strong> Extracts liquid honey using centrifugal force while keeping wax combs completely intact for reuse by the bees.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Built for educational use in apiculture & sustainable agriculture.</p>
+  </footer>
+
+  <!-- Filter JavaScript -->
+  <script>
+    function filterTools(category, e) {
+      const cards = document.querySelectorAll('.tool-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (e && e.target) {
+        e.target.classList.add('active');
+      }
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
 </html>
